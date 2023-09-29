@@ -1,0 +1,407 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@model List<Message>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CurrentLayout.cshtml";
+}
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>AdminLTE 3 | User Profile</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Ionicons -->
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- Theme style -->
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+
+    <!-- Google Font: Source Sans Pro -->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <!-- /.navbar -->
+        <!-- Content Wrapper. Contains page content -->
+        <!-- Content Header (Page header) -->
+
+        <section class="content-header">
+
+            <div class="container-fluid">
+
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+
+                        <h1>Profile</h1>
+
+                    </div>
+
+
+
+                </div>
+
+            </div><!-- /.container-fluid -->
+
+        </section>
+
+        <!-- Main content -->
+
+        <section class="content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-3">
+
+                        <!-- Profile Image -->
+
+                        <div class="card card-primary card-outline">
+
+                            <div class="card-body box-profile">
+
+                                <div class="text-center">
+
+                                    <img class="profile-user-img img-fluid img-circle"
+                                         src="~/Images/user-icon-png-transparent-17.jpg"
+                                    
+                                    alt="User profile picture">
+
+                                </div>
+                                @*@foreach (var item in Model)
+                                {*@
+                                    <h3 class="profile-username text-center">@ViewBag.CurrentFirstAndLastName</h3>
+
+                                    <p class="text-muted text-center">@ViewBag.CurrentMail</p>
+
+                                @*}*@
+
+                                <ul class="list-group list-group-unbordered mb-3">
+
+                                    <li class="list-group-item">
+
+                                        <b>Number of Sales</b> <a class="float-right">@ViewBag.TotalTradeQuantity</a>
+
+                                    </li>
+
+                                    <li class="list-group-item">
+
+                                        <b>Total Amount of Trade</b> <a class="float-right">@ViewBag.TotalAmountOfTrade</a>
+
+                                    </li>
+
+                                    <li class="list-group-item">
+
+                                        <b>Number of products that bought </b> <a class="float-right">@ViewBag.TotalMumbderOfProductThatBought</a>
+
+                                    </li>
+
+                                </ul>
+
+                                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+
+                            </div>
+
+                            <!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.card -->
+                        <!-- About Me Box -->
+
+                        <div class="card card-primary">
+
+                            <div class="card-header">
+
+                                <h3 class="card-title">About Me</h3>
+
+                            </div>
+
+                            <!-- /.card-header -->
+
+                          
+                                <div class="card-body">
+
+                                    <strong><i class="fas fa-book mr-1"></i> Education</strong>
+
+                                    <p class="text-muted">
+
+                                        B.S. in Computer Science from the University of Tennessee at Knoxville
+
+                                    </p>
+
+                                    <hr>
+
+                                    <strong><i class="fas fa-map-marker-alt mr-1"></i> City</strong>
+
+                                    <p class="text-muted">@ViewBag.CurrentCity</p>
+
+                                  
+                                   
+
+                                </div>
+                         
+
+
+                            <!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.card -->
+
+                    </div>
+
+                    <!-- /.col -->
+
+                    <div class="col-md-9">
+
+                        <div class="card">
+
+                            <div class="card-header p-2">
+
+                                <ul class="nav nav-pills">
+
+                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Messages</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+
+                                </ul>
+
+                            </div><!-- /.card-header -->
+
+                            <div class="card-body">
+
+                                <div class="tab-content">
+
+                                    <div class="active tab-pane" id="activity">
+
+                                        <!-- Post -->
+                                        @foreach (var item in Model)
+                                        {
+                                            <div class="post">
+
+                                                <div class="user-block">
+
+                                                    <img class="img-circle img-bordered-sm" src="~/Images/mail.png" alt="user image">
+
+                                                    <span class="username">
+
+
+                                                        <a href="#">@item.MessageSender</a>
+
+                                                        <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+
+                                                    </span>
+
+                                                    <span class="description">@item.MessageSubject - @item.MessageDate.ToShortDateString()</span>
+
+                                                </div>
+
+                                                <!-- /.user-block -->
+
+                                                <p>
+
+                                                    @item.MessageContent
+
+                                                </p>
+
+                                                <p>
+
+                                                    <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
+
+                                                    <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+
+                                                    <span class="float-right">
+
+                                                        <a href="#" class="link-black text-sm">
+
+                                                            <i class="far fa-comments mr-1"></i> Comments (5)
+
+                                                        </a>
+
+                                                    </span>
+
+                                                </p>
+
+                                                <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+
+                                            </div>
+                                        }
+
+
+
+                                        <!-- /.post -->
+
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+                                    <div class="tab-pane" id="timeline">
+                                         @Html.Action("PartialViewAnnouncement", "CurrentPanel")
+                                         </div>
+                                    <!-- /.tab-pane -->
+
+                                    <div class="tab-pane" id="settings">
+
+                                        @Html.Action("PartialViewForUserDataUpdatePart", "CurrentPanel")
+
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+
+                                </div>
+
+                                    <!-- /.tab-content -->
+
+                                </div><!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.nav-tabs-custom -->
+
+                    </div>
+
+                    <!-- /.col -->
+
+                </div>
+
+                <!-- /.row -->
+
+            </div><!-- /.container-fluid -->
+
+        </section>
+
+        <!-- /.content -->
+
+    </div>
+
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+
+        <div class="float-right d-none d-sm-block">
+
+            <b>Version</b> 3.0.4
+
+        </div>
+
+        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+
+        reserved.
+
+    </footer>
+
+    <!-- Control Sidebar -->
+
+    <aside class="control-sidebar control-sidebar-dark">
+
+        <!-- Control sidebar content goes here -->
+
+    </aside>
+
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AdminLTE App -->
+
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="card mb-3" style="max-width: max-content; height : auto">
+        <div class="row ">
+            <div class="card-body d-flex">
+                <div class="col-md-4 d-flex flex-column">
+                    <div class="">
+                        <img src="~/Images/IMG-20180728-WA0006.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+
+                    <div class="card mt-3">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Mail Adress</li>
+                            <li class="list-group-item">@HttpContext.Current.User.Identity.Name</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <table class="table">
+
+                        @using (Html.BeginForm("", "CurrentPanel", FormMethod.Post))
+                        {
+
+                            <tr>
+
+                                <td>@Html.TextBoxFor(m => m.CurrentFirstName, new { @class = "form-control" })</td>
+                            </tr>
+
+                            <tr>
+                                <td>@Html.TextBoxFor(m => m.CurrnetLastName, new { @class = "form-control" })</td>
+                            </tr>
+
+                            <tr>
+                                <td>@Html.TextBoxFor(m => m.CurrentCity, new { @class = "form-control" })</td>
+                            </tr>
+
+                            <tr>
+                                <td>@Html.TextBoxFor(m => m.CurrentPassword, new { @class = "form-control" })</td>
+                            </tr>
+                        }
+
+                    </table>
+                    <button class="btn btn-info">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>*@

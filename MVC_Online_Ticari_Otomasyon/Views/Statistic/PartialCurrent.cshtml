@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MVC_Online_Ticari_Otomasyon.Models.Classes.Current>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Customers</h3>
+
+                
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height:300px">
+                <table class="table table-hover table-head-fixed text-nowrap">
+                    <thead>                      
+                        <tr>
+                            
+                            <th>ID</th>
+                            <th>Customer First Name</th>
+                            <th>Customer First Name</th>
+                            <th>Customer City</th>
+                            <th>Customer Mail</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                
+                                <td>@item.CurrentId</td>
+                                <td>@item.CurrentFirstName</td>
+                                <td>@item.CurrnetLastName</td>
+                                <td>@item.CurrentCity</td>
+                                <td>@item.CurrentMail</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>

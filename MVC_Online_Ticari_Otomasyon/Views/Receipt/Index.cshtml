@@ -1,0 +1,65 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@model List<Receipt>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    
+                    <th>Serial Sequence No </th>
+                    
+                    <th>Tax Office</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Deliverer</th>
+                    <th>Receiver</th>
+                    <th>Total Amount</th>
+                    <th>Edit</th>
+                    <th>Details</th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        <td>@item.ReceiptSeriNo @item.ReceiptSequenceNo</td>
+                        
+                        <td>@item.ReceiptTaxOffice</td>
+                        <td>@Convert.ToDateTime(item.ReceiptDate).ToString("dd/MM/yyyy")</td>
+                        <td>@item.ReceiptTime</td>
+                        <td>@item.ReceiptDeliverer</td>
+                        <td>@item.ReceiptReceiver</td>
+                        <td>@item.ReceiptTotalAmount</td>
+                        <td><a href="/Receipt/GetReceipt/@item.ReceiptId"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td>
+
+                            <a href="/Receipt/ReceiptDetail/@item.ReceiptId" style="color:#ff0000; margin-left:5px"><i class="fa-solid fa-circle-info"></i></a>
+                        </td>
+                        
+                       
+                        
+                     </tr>   
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col-lg-3"> <a href="/Receipt/AddReceipt" style="color:#18740b; margin-left:3px"><i class="fa-solid fa-square-plus" style="margin-right:4px"></i>AddReceipt</a></div>
+
+        @*<div class="col-lg-1 text-end"> <a href="/Product/PrintProductList" style="color:#18740b; margin-left:3px"><i class="fa-solid fa-print" style="margin-right:4px"></i>Print</a></div>*@
+
+    </div>
+</div>
+
+

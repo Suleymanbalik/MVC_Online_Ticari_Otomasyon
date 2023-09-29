@@ -1,0 +1,64 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.CategoryToProductCascading
+@{
+    ViewBag.Title = "CascadingCategoryToProducttt";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+
+    $(function () {
+
+        $('#DrpCategory').change(function () {
+
+            var id = $('#DrpCategory').val();
+
+            $.ajax({
+
+                url: '/Category/GetProductAfterSelectedCategory',
+
+                data: { p: id },
+
+                type: "POST",
+
+                dataType: "Json",
+
+                success: function (data) {
+
+                    console.log(data);
+
+                    $('#DrpProduct').empty();
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        $('#DrpProduct').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+
+                    }
+
+                }
+
+            });
+
+        });
+
+    });
+
+</script>
+
+
+
+<div class="container">
+    <div class="row">
+        @Html.Label("Categories")
+        @Html.DropDownList("DrpCategory", Model.CascadingCategories, "---Select Category---", new { @class = "form-control" })
+
+        <br />
+
+        @Html.Label("Products")
+        @Html.DropDownList("DrpProduct", Model.CascadingProducts, "---SelectProduct---", new { @class = "form-control" })
+
+    </div>
+</div>
+

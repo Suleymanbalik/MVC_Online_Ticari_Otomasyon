@@ -1,0 +1,43 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.Current
+@{
+    ViewBag.Title = "GetCurrent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Customers</h2>
+@using (Html.BeginForm("UpdateCurrent", "Current", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <form class="form-group" method="post">
+                <table class="table">
+                    <tr>
+                        <th>First Name</th>
+                        <td>
+                            @Html.TextBoxFor(m => m.CurrentFirstName, new { @class = "form-control" })
+                            @Html.HiddenFor(m=>m.CurrentId)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Last Name</th>
+                        <td>@Html.TextBoxFor(m => m.CurrnetLastName, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>City</th>
+                        <td>@Html.TextBoxFor(m => m.CurrentCity, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Mail</th>
+                        <td>@Html.TextBoxFor(m => m.CurrentMail, new { @class = "form-control" })</td>
+                    </tr>
+                    @*<tr>
+                            <th>Status</th>
+                            <td>@Html.TextBoxFor(m => m.CurrentStatus, new { @class = "form-control" })</td>
+                        </tr*@>
+                </table>
+                <button class="btn btn-info" type="submit">Update Customer</button>
+            </form>
+        </div>
+    </div>
+
+}

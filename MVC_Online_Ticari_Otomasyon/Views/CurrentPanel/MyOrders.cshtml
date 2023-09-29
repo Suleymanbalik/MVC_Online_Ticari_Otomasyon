@@ -1,0 +1,33 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@model List<SalesTransaction> 
+@{
+    ViewBag.Title = "MyOrders";
+    Layout = "~/Views/Shared/_CurrentLayout.cshtml";
+}
+
+<h2>My Order History</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total Amout</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product.ProductName</td>
+                <td>@item.SalesTransactionPiece</td>
+                <td>@item.SalesTransactionPrice</td>
+                <td>@item.SalesTransactionTotalAmount</td>
+                <td>@Convert.ToDateTime(item.SalesTransactionDate).ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

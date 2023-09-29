@@ -1,0 +1,57 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@model List<Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container mt-2">
+    <div class="row">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-3"><strong>EMPLOYEE</strong></div>
+
+                <div class="col-lg-2 text-end btn "> <a href="/Employee/EmployeeInfo"  cstyle="color:#18740b; margin-left:3px"><strong>EmployeeInfo</strong></a></div>
+
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead class="bg-black">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Lastname</th>
+                    <th>Image</th>
+                    <th>Department</th>
+                    <th>Edit</th>
+                    <th>Sales</th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EmployeeId</td>
+                        <td>@item.EmployeeFirstName</td>
+                        <td>@item.EmployeeLastName</td>
+                        <td> 
+                            <img src="@item.EmployeePic" class="rounded-circle" style="height:100px; width:100px; bord"/>
+                        </td>
+                        <td>@item.Department.DepartmentName</td>
+                        <td>
+                            <a href="/Employee/GetEmployee/@item.EmployeeId"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="/Employee/DeleteEmployee/@item.EmployeeId" style="color:#ff0000; margin-left:5px"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                        <td> <a href="/Department/DepartmentSalesDetail/@item.EmployeeId" style="color:#238a13; margin-left:5px"><i class="fa-solid fa-circle-info"></i>Sales History</a></td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+        <a href="/Employee/AddEmployee/" style="color:#18740b; margin-left:3px"><i class="fa-solid fa-square-plus" style="margin-right:4px"></i>AddEmployee</a>
+    </div>
+</div>

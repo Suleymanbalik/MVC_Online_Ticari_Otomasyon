@@ -1,0 +1,28 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.Department
+@{
+    ViewBag.Title = "GetDepartment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("UpdateDepartment", "Department", FormMethod.Post))
+{
+   <div class="form-group">
+       <div class="row">
+           <h2><strong>Update Department</strong></h2>
+           <table class="table table-bordered">
+               <tr>
+                   <td>Department Name</td>
+                   <td>@Html.TextBoxFor(m => m.DepartmentName, new { @class = "form-control" })</td>
+               </tr>
+               <tr>
+                   <td>Department Status</td>
+                   <td>@Html.TextBoxFor(m => m.DepartmentStatus, new { @class = "form-control" })</td>
+                   @Html.HiddenFor(m=>m.DepartmentId)
+               </tr>
+           </table>
+           <button class="btn btn-dark">Update Department</button>
+       </div>
+   </div>
+}
+

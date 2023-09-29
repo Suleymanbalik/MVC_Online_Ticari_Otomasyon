@@ -1,0 +1,71 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.SalesTransaction
+@{
+    ViewBag.Title = "GetSale";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Update Sale</h2>
+@using (Html.BeginForm("UpdateSales", "SalesTransactions", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <form class="form-group" method="post">
+                <table class="table">
+                    <tr>
+                        <th>Employee Name</th>
+                        <td>
+                            @Html.DropDownListFor(m => m.Employeeid, (List<SelectListItem>)ViewBag.employeelist, new { @class = "form-control" })
+                            @Html.HiddenFor(m=>m.SalesTransactionId)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Customer Name</th>
+                        <td>
+                            @Html.DropDownListFor(m => m.Currentid, (List<SelectListItem>)ViewBag.currentlist, new { @class = "form-control" })
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Products</th>
+                        <td>
+                            @Html.DropDownListFor(m => m.Productid, (List<SelectListItem>)ViewBag.productlist, new { @class = "form-control" })
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Quantity</th>
+                        <td>
+                            @Html.TextBoxFor(m => m.SalesTransactionPiece, new { @class = "form-control" })
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Price(Per one)</th>
+                        <td>
+                            @Html.TextBoxFor(m => m.SalesTransactionPrice, new { @class = "form-control" })
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Total Amount</th>
+                        <td>
+                            @Html.TextBoxFor(m => m.SalesTransactionTotalAmount, new { @class = "form-control" })
+
+                        </td>
+                    </tr>
+                    <tr>
+                            <th>Date</th>
+                            <td>
+                                @Html.TextBoxFor(m => m.SalesTransactionDate, new { @class = "form-control" })
+
+                            </td>
+                        </tr>
+
+                </table>
+                <button class="btn btn-info" type="submit">Update Sale</button>
+            </form>
+        </div>
+    </div>
+
+}
+

@@ -1,0 +1,98 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.Current
+
+
+@using (Html.BeginForm("UpdateCurrentData", "CurrentPanel", FormMethod.Post))
+{
+    @Html.HiddenFor(m=>m.CurrentId)
+    <form class="form-horizontal">
+
+        <div class="form-group row">
+
+            <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
+
+            <div class="col-sm-10">
+
+                @Html.TextBoxFor(m=>m.CurrentFirstName, new  { @class="form-control" })
+
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+
+            <label for="inputEmail" class="col-sm-2 col-form-label">Last Name</label>
+
+            <div class="col-sm-10">
+
+                @Html.TextBoxFor(m => m.CurrnetLastName, new { @class = "form-control" })
+
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+
+            <label for="inputName2" class="col-sm-2 col-form-label">Email</label>
+
+            <div class="col-sm-10">
+
+                @Html.TextBoxFor(m => m.CurrentMail, new { @class = "form-control" })
+
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+
+            <label for="inputExperience" class="col-sm-2 col-form-label">City</label>
+
+            <div class="col-sm-10">
+
+                @Html.TextBoxFor(m => m.CurrentCity, new { @class = "form-control" })
+
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+
+            <label for="inputSkills" class="col-sm-2 col-form-label">Password</label>
+
+            <div class="col-sm-10">
+
+                @Html.TextBoxFor(m => m.CurrentPassword, new { @class = "form-control" })
+
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+
+            <div class="offset-sm-2 col-sm-10">
+
+                <div class="checkbox">
+
+                    <label>
+
+                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+
+            <div class="offset-sm-2 col-sm-10">
+
+                <button type="submit" class="btn btn-danger">Submit</button>
+
+            </div>
+
+        </div>
+
+    </form>
+}

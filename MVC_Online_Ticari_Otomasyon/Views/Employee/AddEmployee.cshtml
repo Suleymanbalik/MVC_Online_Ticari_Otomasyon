@@ -1,0 +1,52 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.Employee
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddEmployee</h2>
+@using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post, new {enctype = "multipart/form-data"}))
+{
+    <div class="container">
+        <div class="row">
+            <form class="form-group" method="post">
+                <table class="table">
+                    <tr>
+                        <th>First Name</th>
+                        <td>
+                            @Html.TextBoxFor(m => m.EmployeeFirstName, new { @class = "form-control" })
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Last Name</th>
+                        <td>
+                            @Html.TextBoxFor(m => m.EmployeeLastName, new { @class = "form-control" })
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Image</th>
+                        <td>
+                            <input type="file" name="EmployeePic"/>
+                            @*@Html.TextBoxFor(m => m.EmployeePic, new { @class = "form-control" })*@
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Departments</th>
+                        <td>
+                            @Html.DropDownListFor(m => m.Departmentid,(List<SelectListItem>)ViewBag.departments, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    @*<tr>
+                            <th>Status</th>
+                            <td>@Html.TextBoxFor(m => m.CurrentStatus, new { @class = "form-control" })</td>
+                        </tr>*@
+                </table>
+                <button class="btn btn-info" type="submit">Add Employee</button>
+            </form>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,43 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.CargoDetail
+@{
+    ViewBag.Title = "AddNewCargo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddNewCargo</h2>
+
+@using (Html.BeginForm("AddNewCargo", "Cargo", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <form class="form-group" method="post">
+                <table class="table">
+
+                    <tr>
+                        <th>@Html.LabelFor(m => m.CargoTrackingNumber)</th>
+                        <td><input type="text" class="form-control" name="CargoTrackingNumber" value="@ViewBag.TrackingNumber" readonly/></td>
+                    </tr>
+                    <tr>
+                        <th>@Html.LabelFor(m => m.CargoEmployee)</th>
+                        <td>@Html.TextBoxFor(m => m.CargoEmployee, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.LabelFor(m => m.CargoCurrent)</th>
+                        <td>@Html.TextBoxFor(m => m.CargoCurrent, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.LabelFor(m => m.CargoDate)</th>
+                        <td><input class="form-control" type="date" name="CargoDate" /></td>
+                    <tr>
+                        <th>@Html.LabelFor(m => m.CargoExplanation)</th>
+                        <td>@Html.TextBoxFor(m => m.CargoExplanation, new { @class = "form-control" })</td>
+                    </tr>
+
+
+                </table>
+                <button class="btn btn-info" type="submit">Add Cargo</button>
+            </form>
+        </div>
+    </div>
+
+}

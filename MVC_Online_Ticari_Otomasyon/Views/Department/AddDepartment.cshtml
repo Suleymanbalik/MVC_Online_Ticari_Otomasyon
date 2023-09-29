@@ -1,0 +1,36 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.Department
+@{
+    ViewBag.Title = "AddDepartment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("AddDepartment", "Department", FormMethod.Post))
+{
+    <form class="form-group" method="post">
+        <div class="container">
+            <div class="row">
+                <h2><strong>Add Department</strong></h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>
+                                <strong>Department Name</strong>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.TextBoxFor(m => m.DepartmentName, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-dark">Add Department</button>
+            </div>
+        </div>
+    </form>
+
+}

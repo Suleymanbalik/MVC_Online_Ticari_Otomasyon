@@ -1,0 +1,41 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.Category
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+@using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+{
+    <form class="form-group" method="post">
+        <div class="container">
+            <div class="row">
+                <h2><strong>Add Category</strong></h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>
+                                <strong>Category Name</strong>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-dark" id="btn1">Add Category</button>
+            </div>
+        </div>
+    </form>
+
+}
+
+<script>
+    $('#btn1').click(function () {
+        alert("Category Added!")
+    });
+</script>

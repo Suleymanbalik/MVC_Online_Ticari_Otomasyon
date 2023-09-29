@@ -1,0 +1,58 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-2">
+    <div class="row">
+        <label><strong>CATEGORIES</strong></label>
+        <table class="table table-striped">
+            <thead class="bg-black">
+                <tr>
+
+                    <th>Category Name</th>
+                    <th>Düzenle</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.CategoryName</td>
+                        <td>
+                            <a href="/Category/GetCategory/@item.CategoryId"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="/Category/DeleteCategory/@item.CategoryId" style="color:#ff0000; margin-left:5px"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="container ">
+            <div class="row d-flex justify-content-between">
+                <div class="col-6">
+                    <a href="/Category/AddCategory" style="color:#18740b; margin-left:3px"><i class="fa-solid fa-square-plus" style="margin-right:4px"></i>AddCategory</a>
+                </div>
+                <div class="col-6 text-right">
+                    <label>
+                        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+                   {
+                       LiElementClasses = new List<string> { "page-link" }
+                   })
+                    </label>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+

@@ -1,0 +1,60 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.Product
+@{
+    ViewBag.Title = "GetProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Update Product</h2>
+
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <form class="form-group" method="post">
+                <table class="table">
+                    
+                    <tr>
+                        <th>Name</th>
+                        <td>
+                            @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+                            @Html.HiddenFor(m=>m.ProductId)
+                            @*null değer dönmemesi için hiddenfor ekledikk*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Brand</th>
+                        <td>@Html.TextBoxFor(m => m.ProductBrand, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Inventory</th>
+                        <td>@Html.TextBoxFor(m => m.ProductStock, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Purchase Price</th>
+                        <td>@Html.TextBoxFor(m => m.ProductBuyingPrice, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Sale Price</th>
+                        <td>@Html.TextBoxFor(m => m.ProductSalePrice, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Category</th>
+                        @*<td>@Html.TextBoxFor(m => m.Categoryid, new { @class = "form-control" })</td>*@
+                        <td>@Html.DropDownListFor(m => m.Categoryid, (List<SelectListItem>)ViewBag.categorylist, new { @class = "form-control" })</td>
+
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>@Html.TextBoxFor(m => m.ProductStatus, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Image</th>
+                        <td>@Html.TextBoxFor(m => m.ProductPic, new { @class = "form-control" })</td>
+                    </tr>
+                </table>
+                <button class="btn btn-info" type="submit">Update Product</button>
+            </form>
+        </div>
+    </div>
+
+}

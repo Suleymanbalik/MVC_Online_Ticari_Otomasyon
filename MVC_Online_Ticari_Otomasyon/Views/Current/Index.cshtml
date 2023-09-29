@@ -1,0 +1,47 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@model List<Current>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container mt-2">
+    <div class="row">
+        <label><strong>CURRENTS</strong></label>
+        <table class="table table-striped">
+            <thead class="bg-black">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Lastname</th>
+                    <th>City</th>
+                    <th>Mail</th>
+                    <th>Edit</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CurrentId</td>
+                        <td>@item.CurrentFirstName</td>
+                        <td>@item.CurrnetLastName</td>
+                        <td>@item.CurrentCity</td>
+                        <td>@item.CurrentMail</td>
+                        <td>
+                            <a href="/Current/GetCurrent/@item.CurrentId"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="/Current/DeleteCurrent/@item.CurrentId" style="color:#ff0000; margin-left:5px"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                        <td> <a href="/Current/CurrentSalesHistory/@item.CurrentId" style="color:#238a13; margin-left:5px"><i class="fa-solid fa-circle-info"></i>Trading History</a></td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+        <a href="/Current/AddCurrent/" style="color:#18740b; margin-left:3px"><i class="fa-solid fa-square-plus" style="margin-right:4px"></i>AddCurrent</a>
+    </div>
+</div>

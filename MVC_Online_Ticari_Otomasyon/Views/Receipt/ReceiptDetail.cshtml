@@ -1,0 +1,44 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@model List<Receipt_Item>
+@{
+    ViewBag.Title = "ReceiptDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ReceiptItems</h2>
+<div class="container-fluid">
+    <ol class="breadcrumb mb-4">       
+    </ol>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Receipt Explanation</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ReceiptitemId</td>
+                        <td>@item.ReceiptitemExplanation</td>
+                        <td>@item.ReceiptitemQuantity</td>
+                        <td>@item.ReceiptitemUnitPrice</td>
+                        <td>@item.ReceiptitemPrice</td>
+                        
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a href="/Receipt/AddReceiptItem/" class="btn btn-info"  margin-left:5px">Add Item</a>
+    </div>
+</div>
+

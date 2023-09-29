@@ -1,0 +1,57 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Product>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Products</h3>
+
+               
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Inventory</th>
+                            <th>Purchase Price</th>
+                            <th>Parketing Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProductId</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.ProductBrand</td>
+                                <td>@item.ProductBrand</td>
+                                <td>@item.ProductBuyingPrice</td>
+                                <td>@item.ProductSalePrice</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("SimpleTables", new { page }), new PagedListRenderOptions
+    {
+        LiElementClasses = new List<string>
+        {
+            "page-link"
+        }
+    })
+           
+     
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>

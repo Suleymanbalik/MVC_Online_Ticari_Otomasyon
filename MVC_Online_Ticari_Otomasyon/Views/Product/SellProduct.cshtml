@@ -1,0 +1,80 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.SalesTransaction
+@{
+    ViewBag.Title = "SellProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mt-2">SellProduct</h2>
+@using (Html.BeginForm("SellProduct", "Product", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <form class="form-group" method="post">
+                <table class="table">
+
+                    <tr>
+                        <th>Product ID</th>
+                        @*<td>@Html.TextBoxFor(m => m.Productid, new { @class = "form-control" })</td>*@
+
+                        <td><input type="text" name="Productid" value="@ViewBag.ProductID" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <th>Employee</th>
+                        @*<td>@Html.TextBoxFor(m => m.Employeeid, new { @class = "form-control" })</td>*@
+                        <td>@Html.DropDownListFor(m => m.Employeeid, (List<SelectListItem>)ViewBag.Employees, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Customer</th>
+                        <td>@Html.TextBoxFor(m => m.Currentid, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Quantity</th>
+                        @*<td>@Html.TextBoxFor(m => m.SalesTransactionPiece, new { @class = "form-control" })</td>*@
+                        <td>
+                            <input type="number" name="SalesTransactionPiece" min="0" class="form-control" required id="txt1" onkeyup="multiply()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td><input type="text" name="SalesTransactionPrice" value="@ViewBag.ProductSaleprice" class="form-control" onkeyup="multiply()" id="txt2"/></td>
+                    </tr>
+                    <tr>
+                        <th>Total Price</th>
+                        @*<td>@Html.TextBoxFor(m => m.SalesTransactionTotalAmount, new { @class = "form-control" })</td>*@
+                        <td>
+                            <input type="text" class="form-control" name="SalesTransactionTotalAmount" value="0" id="txt3" readonly />
+                        </td>
+                    </tr>
+                    
+
+                </table>
+                <button class="btn btn-info" type="submit">Add Sale</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        function multiply() {
+            var value1 = document.getElementById('txt1').value;
+            var value2 = document.getElementById('txt2').value;
+            var result = parseInt(value1) * parseInt(value2);
+            if (!isNaN(result)) {
+                document.getElementById('txt3').value = result;
+            }
+
+        }
+    </script>
+}
+
+<script>
+    function sum() {
+        var value1 = document.getElementById('txt1').value;
+        var value2 = document.getElementById('txt2').value;
+        var result = parseInt(value1) * parseInt(value2);
+        if (!isNaN(result)) {
+            document.getElementById('txt3').value = result;
+        }
+
+    }
+</script>

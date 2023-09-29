@@ -1,0 +1,49 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@model List<SalesTransaction>
+
+@{
+    ViewBag.Title = "CurrentSalesHistory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Trading History</h2>
+
+<div class="container-fluid my-2">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><strong>Current/Customer Name:</strong> @ViewBag.CurrentName</li>
+    </ol>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Sales ID</th>
+                    <th>Product</th>
+                    <th>Employee</th>
+                    <th>Sales Quantity</th>
+                    <th>Price(Per one)</th>
+                    <th>Total Amount</th>
+                    <th>Sales Date</th>
+                    
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.SalesTransactionId</td>
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.Employee.EmployeeFirstName @item.Employee.EmployeeLastName</td>
+                        <td>@item.SalesTransactionPiece</td>
+                        <td>@item.SalesTransactionPrice</td>
+                        <td>@item.SalesTransactionTotalAmount</td>
+                        <td>@item.SalesTransactionDate</td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

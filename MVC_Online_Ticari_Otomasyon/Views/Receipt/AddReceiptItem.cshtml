@@ -1,0 +1,47 @@
+﻿@model MVC_Online_Ticari_Otomasyon.Models.Classes.Receipt_Item
+@{
+    ViewBag.Title = "AddReceiptItem";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddReceiptItem</h2>
+@using (Html.BeginForm("AddReceiptItem", "Receipt", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <form class="form-group" method="post">
+                <table class="table">
+                    <tr>
+                        <th>Explanation</th>
+                        <td>@Html.TextBoxFor(m => m.ReceiptitemExplanation, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Quantity</th>
+                        <td>@Html.TextBoxFor(m => m.ReceiptitemQuantity, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Unit Price</th>
+                        <td>@Html.TextBoxFor(m => m.ReceiptitemUnitPrice, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Total Price</th>
+                        <td>@Html.TextBoxFor(m => m.ReceiptitemPrice, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <th>Receipt id</th>
+                        <td>@Html.TextBoxFor(m => m.Receiptid, new { @class = "form-control" })</td>
+
+
+                    </tr>
+                </table>
+                <div class="dropdown-divider"></div>
+                <div>
+                    <button class="btn btn-info" type="submit">Add Receipt Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    @*@Html.TextBoxFor(m => m.Receiptid, new { @Value
+        =@ViewBag.Receiptid, @class = "form-control" })*@
+}
+

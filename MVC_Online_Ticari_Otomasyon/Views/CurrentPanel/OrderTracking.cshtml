@@ -1,0 +1,71 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@model List<CargoDetail>
+
+    @{
+        ViewBag.Title = "OrderTracking";
+        Layout = "~/Views/Shared/_CurrentLayout.cshtml";
+    }
+
+    
+    <div class="container mt-2">
+        <div class="row justify-content-between">
+
+            <div class="col-4">
+                <label class="fs-2"><strong>Order Tracking</strong></label>
+            </div>
+
+            <div class="col-6 text-right">
+                @using (Html.BeginForm("OrderTracking", "CurrentPanel", FormMethod.Get))
+                {
+                    <div class="row d-flex">
+                        <div class="col-4">
+                            <span>Tracking Number : </span>
+                        </div>
+                        <div class="col-5">
+                            @Html.TextBox("n", "", new { @class = "form-control", @style = "width:200px" })
+                        </div>
+                        <div class="col-3">
+                            <input type="submit" value="Search..." />
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+
+
+            <table class="table table-striped mt-2">
+                <thead class="bg-black">
+                    <tr>
+                        <th>Employee</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Explanation</th>
+                        <th>Tracking Number</th>
+                        @*<th>Edit</th>*@
+                        <th>Cargo Status</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CargoEmployee</td>
+                            <td>@item.CargoCurrent</td>
+                            <td>@item.CargoDate</td>
+                            <td>@item.CargoExplanation</td>
+                            <td>@item.CargoTrackingNumber</td>
+                            @*<td>
+                                    <a href="/Department/GetDepartment/@item.CargoDetailid"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="/Department/DeleteDepartment/@item.CargoDetailid" style="color:#ff0000; margin-left:5px"><i class="fa-solid fa-trash"></i></a>
+                                </td>*@
+                            <td> <a href="/CurrentPanel/OrderTrackingDetail/@item.CargoTrackingNumber" style="color:#238a13; margin-left:5px"><i class="fa-solid fa-circle-info"></i></a></td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+           
+        </div>
+    </div>

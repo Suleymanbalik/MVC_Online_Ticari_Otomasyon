@@ -1,0 +1,72 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@model List<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="fw-bold">Products</h2>
+<div class="container mt-2">
+    <div class="row">
+
+        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+        {
+
+
+            <p>
+                Product Name : @Html.TextBox("p")
+                <input type="submit" value="Search..." />
+            </p>
+
+        }
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Inventory</th>
+                    <th>Purchase Price</th>
+                    <th>Sale Price</th>
+                    <th>Category</th>
+                    <th>Sell</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.ProductName</td>
+                        <td>@item.ProductBrand</td>
+                        <td>@item.ProductStock</td>
+                        <td>@item.ProductBuyingPrice ₺</td>
+                        <td>@item.ProductSalePrice ₺</td>
+                        <td>@item.Category.CategoryName</td>
+                        <td>
+                            <a href="/Product/SellProduct/@item.ProductId" style="color:#18740b">
+                               
+                                <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/Product/GetProduct/@item.ProductId"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="/Product/DeleteProduct/@item.ProductId" style="color:#ff0000; margin-left:5px"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col-lg-3"> <a href="/Product/AddProduct" style="color:#18740b; margin-left:3px"><i class="fa-solid fa-square-plus" style="margin-right:4px"></i>AddProduct</a></div>
+
+        <div class="col-lg-1 text-end"> <a href="/Product/PrintProductList" style="color:#18740b; margin-left:3px"><i class="fa-solid fa-print" style="margin-right:4px"></i>Print</a></div>
+
+    </div>
+</div>
+

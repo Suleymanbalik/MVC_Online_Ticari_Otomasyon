@@ -1,0 +1,47 @@
+﻿@using MVC_Online_Ticari_Otomasyon.Models.Classes
+@model List<CargoTracking>
+@{
+    ViewBag.Title = "OrderTrackingDetail";
+    Layout = "~/Views/Shared/_CurrentLayout.cshtml";
+}
+
+@*<h2>OrderTrackingDetail</h2>*@
+
+<div class="container mt-2">
+    <div class="row">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-3"><strong>Cargo Status</strong></div>
+
+               
+
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead class="bg-black">
+                <tr>
+                    
+                    <th>Explanation</th>
+                    <th>Date</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        <td>@item.CargoTrackingExplanation</td>
+                        <td>@item.CargoTrackingDate</td>
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
